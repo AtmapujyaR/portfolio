@@ -1,50 +1,60 @@
-# React + TypeScript + Vite
+# Rahul Atmapujya's Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a personal portfolio website built using React, TypeScript, and Vite. It showcases my skills, work experience, and projects in an interactive and responsive design.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Responsive design that works well on desktop and mobile devices
+- Sections for About, Skills, Work Experience, Projects, Education, and Contact
+- Interactive navigation
+- Animated section transitions
+- "Show More / Show Less" functionality for Work Experience and Projects on mobile screens
+- Custom color scheme
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Lucide React (for icons)
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+To run this project locally:
+
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Start the development server:
+   ```
+   npm run dev
+   ```
+4. Open `http://localhost:5173` in your browser
+
+## Building for Production
+
+To create a production build:
+
+```
+npm run build
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+This will generate a `dist` folder with the built assets.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Customization
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+To customize the content of the portfolio:
+
+1. Edit the `src/data/portfolioContent.ts` file to update personal information, skills, experience, and projects.
+2. Modify the color scheme in the same file under the `colors` object.
+
+## Contributing
+
+This is a personal project, but if you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
