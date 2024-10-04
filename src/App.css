@@ -4,6 +4,43 @@
   padding: 2rem;
 }
 
+/* General animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Apply fade-in animation to all direct children of #root */
+#root > * {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Stagger the animation for children */
+#root > *:nth-child(1) { animation-delay: 0.1s; }
+#root > *:nth-child(2) { animation-delay: 0.2s; }
+#root > *:nth-child(3) { animation-delay: 0.3s; }
+#root > *:nth-child(4) { animation-delay: 0.4s; }
+#root > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* Hover effect for interactive elements */
+a, button, .interactive {
+  transition: all 0.3s ease;
+}
+
+a:hover, button:hover, .interactive:hover {
+  transform: translateY(-3px);
+}
+
+/* Smooth color transition */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -34,8 +71,49 @@
 
 .card {
   padding: 2em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .read-the-docs {
   color: #888;
+}
+
+/* Animated underline effect for links */
+a {
+  position: relative;
+  text-decoration: none;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Pulse animation for important elements */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
 }

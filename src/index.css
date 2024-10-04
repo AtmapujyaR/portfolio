@@ -27,6 +27,7 @@ body {
   min-height: 100vh;
   background-color: var(--color-primary);
   color: var(--color-text);
+  scroll-behavior: smooth!important;
 }
 
 a {
