@@ -1,7 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { portfolioContent } from '../data/portfolioContent'
+import React from 'react'
 import '../animations.css'
 import { Navigation } from './Navigation'
 import { About } from './About'
@@ -11,57 +10,20 @@ import { Projects } from './Projects'
 import { Education } from './Education'
 import { Contact } from './Contact'
 import { Footer } from './Footer'
+import { useScrollReveal } from '../hooks/useScrollReveal'
+import { useSetTheme } from '../hooks/useSetTheme'
+import { useSetAboutHeight } from '../hooks/useSetAboutHeight'
 
 export function PortfolioWebsite() {
-  const aboutRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    // Set CSS variables
-    Object.entries(portfolioContent.colors).forEach(([_key, value]) => {
-      document.documentElement.style.setProperty(value.name, value.value)
-    })
-
-    // Set about section height
-    const setAboutHeight = () => {
-      if (aboutRef.current) {
-        const windowHeight = window.innerHeight
-        const navHeight = document.querySelector('nav')?.offsetHeight || 0
-        aboutRef.current.style.minHeight = `${windowHeight - navHeight}px`
-      }
-    }
-
-    setAboutHeight()
-    window.addEventListener('resize', setAboutHeight)
-
-    // Handle reveal effect
-    const handleScroll = () => {
-      const revealElements = document.querySelectorAll('.reveal-on-scroll');
-      for (let i = 0; i < revealElements.length; i++) {
-        const windowHeight = window.innerHeight;
-        const elementTop = revealElements[i].getBoundingClientRect().top;
-        const elementVisible = 150;
-        if (elementTop < windowHeight - elementVisible) {
-          revealElements[i].classList.add('active');
-        } else {
-          revealElements[i].classList.remove('active');
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // Call once to set initial state
-
-    return () => {
-      window.removeEventListener('resize', setAboutHeight)
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+  useScrollReveal();
+  useSetTheme();
+  useSetAboutHeight();
 
   return (
     <div className="min-h-screen bg-primary text-text">
       <Navigation />
       <main>
-        <About aboutRef={aboutRef} />
+        <About />
         <Skills />
         <Experience />
         <Projects />
@@ -69,6 +31,36 @@ export function PortfolioWebsite() {
         <Contact />
       </main>
       <Footer />
+    </div>
+  )
+}
+
+// Optimize child components if they don't need frequent re-renders
+const MemoizedSkills = React.memo(Skills);
+const MemoizedExperience = React.memo(Experience);
+const MemoizedProjects = React.memo(Projects);
+const MemoizedEducation = React.memo(Education);
+const MemoizedContact = React.memo(Contact);
+const MemoizedFooter = React.memo(Footer);
+
+// Use memoized components in the JSX
+export function OptimizedPortfolioWebsite() {
+  useScrollReveal();
+  useSetTheme();
+  useSetAboutHeight();
+
+  return (
+    <div className="min-h-screen bg-primary text-text">
+      <Navigation />
+      <main>
+        <About />
+        <MemoizedSkills />
+        <MemoizedExperience />
+        <MemoizedProjects />
+        <MemoizedEducation />
+        <MemoizedContact />
+      </main>
+      <MemoizedFooter />
     </div>
   )
 }

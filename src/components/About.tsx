@@ -1,14 +1,9 @@
-import { RefObject } from 'react'
 import { Download } from 'lucide-react'
 import { portfolioContent } from '../data/portfolioContent'
 
-interface AboutProps {
-  aboutRef: RefObject<HTMLElement>
-}
-
-export function About({ aboutRef }: AboutProps) {
+export function About() {
   return (
-    <section id="about" ref={aboutRef} className="bg-primary text-accent flex items-center">
+    <section id="about" className="bg-primary text-accent flex items-center" style={{ minHeight: 'var(--about-height, 100vh)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center stagger-fade-in">
           <h1 className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl rotate-in">
