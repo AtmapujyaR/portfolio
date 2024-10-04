@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { portfolioContent } from '../data/portfolioContent'
 
 export function Skills() {
