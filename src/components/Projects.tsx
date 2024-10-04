@@ -1,6 +1,19 @@
+import React, { useState } from 'react';
 import { portfolioContent } from '../data/portfolioContent'
 
 export function Projects() {
+  const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
+
+  const toggleProjectExpansion = (index: number) => {
+    setExpandedProjects(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index) 
+        : [...prev, index]
+    );
+  };
+
+  const isProjectExpanded = (index: number) => expandedProjects.includes(index);
+
   return (
     <section id="projects" className="py-20 bg-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,7 +28,15 @@ export function Projects() {
               </h3>
             </div>
             <div className="px-4 py-5 sm:p-6">
-              <p className="text-text mb-4">{project.description}</p>
+              <p className={`text-text mb-4 ${!isProjectExpanded(index) ? 'line-clamp-3 sm:line-clamp-none' : ''}`}>
+                {project.description}
+              </p>
+              <div 
+                className="mb-4 text-accent transition-colors duration-200 sm:hidden"
+                onClick={() => toggleProjectExpansion(index)}
+              >
+                {isProjectExpanded(index) ? 'Show Less' : 'Show More'}
+              </div>
               <div className="mt-4">
                 <div className="flex flex-wrap gap-2 mt-2">
                   {project.technologies.split(', ').map((tech, techIndex) => (

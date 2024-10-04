@@ -1,6 +1,19 @@
+import React, { useState } from 'react';
 import { portfolioContent } from '../data/portfolioContent'
 
 export function Experience() {
+  const [expandedJobs, setExpandedJobs] = useState<number[]>([]);
+
+  const toggleJobExpansion = (index: number) => {
+    setExpandedJobs(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index) 
+        : [...prev, index]
+    );
+  };
+
+  const isJobExpanded = (index: number) => expandedJobs.includes(index);
+
   return (
     <section id="experience" className="pt-20 bg-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,7 +31,15 @@ export function Experience() {
               </p>
             </div>
             <div className="px-4 py-5 sm:p-6">
-              <p className="text-text">{job.description}</p>
+              <p className={`text-text ${!isJobExpanded(index) ? 'line-clamp-3 sm:line-clamp-none' : ''}`}>
+                {job.description}
+              </p>
+              <div 
+                className="text-accent transition-colors duration-200 sm:hidden"
+                onClick={() => toggleJobExpansion(index)}
+              >
+                {isJobExpanded(index) ? 'Show Less' : 'Show More'}
+              </div>
             </div>
           </div>
         ))}

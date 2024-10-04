@@ -1,7 +1,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding-inline: 2rem;
 }
 
 /* General animations */
@@ -116,4 +115,19 @@ a:hover::after {
 
 .pulse {
   animation: pulse 2s infinite;
+}
+
+
+@media (max-width: 640px) {
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.sm\:line-clamp-none {
+  -webkit-line-clamp: unset;
+  overflow: visible;
 }

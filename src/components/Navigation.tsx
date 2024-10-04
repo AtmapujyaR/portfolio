@@ -46,7 +46,7 @@ export function Navigation() {
       </div>
       {isMenuOpen && (
         <div className="sm:hidden absolute top-16 left-0 right-0 bg-primary z-50 border-b border-accent">
-          <div className="pt-2 pb-3 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div className="pt-2 pb-3 px-4 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
             {portfolioContent.navItems.map((item) => (
               <a
                 key={item}
