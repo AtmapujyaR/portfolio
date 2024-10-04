@@ -67,21 +67,21 @@ export function PortfolioWebsite() {
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
-                <a href='/#'><span className="text-2xl font-bold text-text">RA</span></a>
+                <a href='/portfolio/#'><span className="text-2xl font-bold text-text">RA</span></a>
               </div>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8 stagger-fade-in">
               {portfolioContent.navItems.map((item) => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={`/portfolio/#${item.toLowerCase()}`}
                   className="text-text hover:text-accent inline-flex items-center px-1 pt-1 text-sm font-medium hover-lift"
                 >
                   {item}
                 </a>
               ))}
               <a
-                href={portfolioContent.resumeLink}
+                href="/portfolio/resume_Rahul_Atmapujya.pdf"
                 download
                 className="text-text hover:text-accent inline-flex items-center px-1 pt-1 text-sm font-medium hover-lift"
               >
@@ -106,7 +106,7 @@ export function PortfolioWebsite() {
               {portfolioContent.navItems.map((item) => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={`/portfolio/#${item.toLowerCase()}`}
                   className="text-text hover:bg-accent hover:text-primary block px-3 py-2 text-base font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -114,7 +114,7 @@ export function PortfolioWebsite() {
                 </a>
               ))}
               <a
-                href={portfolioContent.resumeLink}
+                href="/portfolio/resume_Rahul_Atmapujya.pdf"
                 download
                 className="text-text hover:bg-accent hover:text-primary block px-3 py-2 text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
@@ -142,7 +142,7 @@ export function PortfolioWebsite() {
               </p>
               <div className="mt-10 flex flex-wrap justify-center gap-5">
                 <a
-                  href={portfolioContent.resumeLink}
+                  href="/portfolio/resume_Rahul_Atmapujya.pdf"
                   download
                   className="inline-flex items-center px-6 py-3 border border-text text-base font-medium rounded-md text-accent hover:bg-accent hover:text-primary hover-lift"
                 >

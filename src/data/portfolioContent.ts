@@ -2,7 +2,7 @@ export const portfolioContent = {
   name: "Rahul Atmapujya",
   title: "SharePoint Developer",
   about: "Passionate SharePoint Developer with 8+ years of experience in Microsoft technologies. Expertise in SharePoint Online, SPFx, Azure, and Power Platform.",
-  resumeLink: "/src/assets/resume_Rahul_Atmapujya.pdf",
+  resumeLink: "https://atmapujyar.github.io/portfolio/resume_Rahul_Atmapujya.pdf",
   navItems: ['About', 'Skills', 'Experience', 'Education', 'Contact'],
   skills: [
     { name: 'SharePoint', description: 'SharePoint Online, On-Premises 2013' },
