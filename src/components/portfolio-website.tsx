@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, ChevronDown, ChevronUp, Mail, Linkedin, FileText, Award, Book, Briefcase, Github, Download } from 'lucide-react'
+import { Menu, X, ChevronDown, ChevronUp, Mail, Linkedin, Award, Download } from 'lucide-react'
 import { portfolioContent } from '../data/portfolioContent'
 import '../animations.css'
 
@@ -17,7 +17,7 @@ export function PortfolioWebsite() {
 
   useEffect(() => {
     // Set CSS variables
-    Object.entries(portfolioContent.colors).forEach(([key, value]) => {
+    Object.entries(portfolioContent.colors).forEach(([_key, value]) => {
       document.documentElement.style.setProperty(value.name, value.value)
     })
 
